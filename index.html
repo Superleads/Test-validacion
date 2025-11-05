@@ -6,7 +6,7 @@
     <title>Test de validación de Aprendizaje</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Colores de tu identidad visual */
+        /* Colores de tu identidad visual - NUEVA DISTRIBUCIÓN */
         :root {
             --color-dark-blue: #1b2781;
             --color-mint-green: #50edb4;
@@ -17,11 +17,14 @@
         }
 
         body {
-            background-color: var(--color-mint-green); /* Fondo principal de la página */
+            background-color: var(--color-dark-blue); /* Fondo principal AZUL */
         }
         .quiz-container {
             background-color: white;
             color: var(--color-dark-blue);
+        }
+        .text-mint-green {
+            color: var(--color-mint-green); /* Texto menta para contraste */
         }
         .text-dark-blue {
             color: var(--color-dark-blue);
@@ -36,8 +39,17 @@
             border-color: var(--color-dark-blue);
         }
         .progress-bar-fill {
-            background-color: var(--color-dark-blue);
+            background-color: var(--color-mint-green); /* Barra de progreso MENTA */
             transition: width 0.3s ease-in-out;
+        }
+        .bg-mint-green {
+            background-color: var(--color-mint-green); /* Botones MENTA */
+        }
+        .hover\:bg-mint-green-hover:hover {
+            background-color: var(--color-mint-green-hover); /* Hover MENTA */
+        }
+        .text-mint-green {
+            color: var(--color-mint-green); /* Texto MENTA */
         }
 
         /* Estilos para la retroalimentación */
@@ -79,9 +91,7 @@
         
         <!-- Pantalla de Inicio -->
         <div id="welcome-screen">
-            <img src="https://placehold.co/100x100/ffffff/1b2781?text=LOGO&font=inter" alt="SuperLeads Logo" class="w-24 h-24 mx-auto mb-6">
-
-            <h1 class="text-3xl font-bold text-dark-blue mb-4 text-center">Test de validación de Aprendizaje</h1>
+            <h1 class="text-3xl font-bold text-dark-blue mb-4 text-center mt-8">Test de validación de Aprendizaje</h1>
             <p class="text-lg text-slate-700 mb-6 text-center">Por favor, ingresa tus datos para comenzar.</p>
             
             <div class="mb-4">
@@ -93,7 +103,7 @@
                 <input type="text" id="user-institution" class="shadow appearance-none border rounded w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Ej. Universidad XYZ">
             </div>
 
-            <button id="start-btn-welcome" class="w-full bg-dark-blue text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-dark-blue-hover transition-all duration-300 transform hover:scale-105">
+            <button id="start-btn-welcome" class="w-full bg-mint-green text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-mint-green-hover transition-all duration-300 transform hover:scale-105">
                 Iniciar Test
             </button>
             <div id="error-container" class="hidden mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded"></div>
@@ -120,7 +130,7 @@
             <div id="feedback-container" class="hidden p-4 rounded-lg">
                 <p id="feedback-text" class="text-sm font-medium"></p>
             </div>
-            <button id="next-btn" class="hidden w-full bg-dark-blue text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-dark-blue-hover transition-all duration-300 mt-6">
+            <button id="next-btn" class="hidden w-full bg-mint-green text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-mint-green-hover transition-all duration-300 mt-6">
                 Siguiente
             </button>
         </div>
@@ -138,7 +148,7 @@
                 </div>
             </div>
             
-            <button id="restart-btn" class="bg-dark-blue text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-dark-blue-hover transition-all duration-300">
+            <button id="restart-btn" class="bg-mint-green text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-mint-green-hover transition-all duration-300">
                 Volver a Intentar
             </button>
         </div>
