@@ -363,7 +363,7 @@ function showResults() {
 async function sendResultToSheet(payload) {
     try {
         if (!SHEETS_WEB_APP_URL) {
-            console.warn(SHEETS_WEB_APP_URL);
+            console.warn('SHEETS_WEB_APP_URL no está configurado. Pega aquí tu URL de Google Apps Script.');
             return;
         }
         // Intento normal con CORS
