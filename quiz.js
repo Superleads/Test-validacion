@@ -133,7 +133,8 @@ let userInstitution = '';
 // 1. Ve a https://script.google.com y crea un nuevo proyecto
 // 2. Pega el código de google-apps-script.gs que te di
 // 3. Despliega como Web App (Deploy → New deployment → Type: Web App)
-// 4. Copia la URL que termina en /exec y pégala aquí:
+// 4. Copia la URL que termina en /exec y pégala aquí
+// Deployment ID actual: AKfycbyYBs3-sKDR_e958HdCMm2u6ErzjswsRuMvK12HS4qmIL0QUI_e2RAz_p5jsoHYOSew
 const SHEETS_WEB_APP_URL = 'https://script.google.com/a/macros/superleads.mx/s/AKfycbyYBs3-sKDR_e958HdCMm2u6ErzjswsRuMvK12HS4qmIL0QUI_e2RAz_p5jsoHYOSew/exec';
 
 // Referencias a elementos del DOM
@@ -362,7 +363,7 @@ function showResults() {
 async function sendResultToSheet(payload) {
     try {
         if (!SHEETS_WEB_APP_URL) {
-            console.warn('SHEETS_WEB_APP_URL no está configurado. Pega aquí tu URL de Google Apps Script.');
+            console.warn('https://script.google.com/a/macros/superleads.mx/s/AKfycbyYBs3-sKDR_e958HdCMm2u6ErzjswsRuMvK12HS4qmIL0QUI_e2RAz_p5jsoHYOSew/exec');
             return;
         }
         // Intento normal con CORS
