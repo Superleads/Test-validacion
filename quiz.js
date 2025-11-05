@@ -128,6 +128,13 @@ let score = 0;
 let userAnswers = [];
 let userName = '';
 let userInstitution = '';
+// URL del Web App de Google Apps Script
+// PASOS PARA CONFIGURAR:
+// 1. Ve a https://script.google.com y crea un nuevo proyecto
+// 2. Pega el código de google-apps-script.gs que te di
+// 3. Despliega como Web App (Deploy → New deployment → Type: Web App)
+// 4. Copia la URL que termina en /exec y pégala aquí:
+const SHEETS_WEB_APP_URL = 'https://script.google.com/a/macros/superleads.mx/s/AKfycbyYBs3-sKDR_e958HdCMm2u6ErzjswsRuMvK12HS4qmIL0QUI_e2RAz_p5jsoHYOSew/exec';
 
 // Referencias a elementos del DOM
 const welcomeScreen = document.getElementById('welcome-screen');
@@ -333,8 +340,62 @@ function showResults() {
         }
         
         console.log('showResults completed successfully');
+
+        // Enviar resultados a Google Sheets
+        const percent = Math.round((score / quizData.length) * 100);
+        // Alinear nombres de campos con Apps Script
+        sendResultToSheet({
+            nombre: userName,
+            institucion: userInstitution,
+            puntaje: score,
+            porcentaje: percent,
+            total: quizData.length,
+            respuestas: JSON.stringify(userAnswers),
+            timestamp: new Date().toISOString()
+        });
     } catch (error) {
         console.error('Error in showResults:', error);
+    }
+}
+
+// Enviar datos al Web App de Google Apps Script
+async function sendResultToSheet(payload) {
+    try {
+        if (!SHEETS_WEB_APP_URL) {
+            console.warn('SHEETS_WEB_APP_URL no está configurado. Pega aquí tu URL de Google Apps Script.');
+            return;
+        }
+        // Intento normal con CORS
+        const res = await fetch(SHEETS_WEB_APP_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload),
+            credentials: 'omit'
+        });
+        if (res.ok) {
+            console.log('Datos enviados a Sheets. Status:', res.status);
+        } else {
+            console.warn('Respuesta no OK al enviar datos. Status:', res.status, 'Type:', res.type);
+        }
+    } catch (err) {
+        console.warn('Fallo envío con CORS, reintentando con no-cors...', err);
+        // Fallback sin CORS (no permite leer respuesta, pero envía la petición)
+        try {
+            await fetch(SHEETS_WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload),
+                credentials: 'omit'
+            });
+            console.log('Datos enviados a Sheets en modo no-cors (respuesta opaca).');
+        } catch (err2) {
+            console.error('Error enviando datos a Sheets incluso con no-cors:', err2);
+        }
     }
 }
 
