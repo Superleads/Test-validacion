@@ -363,7 +363,7 @@ function showResults() {
 async function sendResultToSheet(payload) {
     try {
         if (!SHEETS_WEB_APP_URL) {
-            console.warn('https://script.google.com/a/macros/superleads.mx/s/AKfycbyYBs3-sKDR_e958HdCMm2u6ErzjswsRuMvK12HS4qmIL0QUI_e2RAz_p5jsoHYOSew/exec');
+            console.warn(SHEETS_WEB_APP_URL);
             return;
         }
         // Intento normal con CORS
