@@ -1,126 +1,374 @@
 // Base de datos de preguntas del test
 const quizData = [
     {
-        question: "¿Cuál es el propósito principal de un test de validación de aprendizaje?",
+        question: "¿Cuál es uno de los 4 pasos obligatorios que cada asesor debe completar en Configuración > Mi Perfil para que la plataforma funcione correctamente?",
         options: [
-            "Evaluar la efectividad de un programa educativo",
-            "Medir el tiempo de estudio de los estudiantes",
-            "Calcular el presupuesto necesario para capacitaciones",
-            "Determinar el número de instructores necesarios"
+            "Crear una firma de correo electrónico.",
+            "Subir una foto de perfil y cambiar el idioma a Español.",
+            "Conectar su calendario personal (Google/Outlook) y definir su Disponibilidad (horarios).",
+            "Conectar sus redes sociales personales."
+        ],
+        correct: 2,
+        hint: "Busca lo necesario en Configuración > Mi Perfil.",
+        rationale: "Para que el agendamiento funcione, debes conectar tu calendario y definir tu disponibilidad."
+    },
+    {
+        question: "¿Cuál es la diferencia clave entre un Contacto y una Oportunidad?",
+        options: [
+            "El Contacto es el lead y la Oportunidad es la empresa para la que trabaja.",
+            "El Contacto es la persona (ficha de datos) y la Oportunidad es la negociación (la tarjeta en el embudo).",
+            "El Contacto es un lead frío y la Oportunidad es un lead caliente.",
+            "No hay diferencia, son lo mismo."
+        ],
+        correct: 1,
+        hint: "Piensa en ficha de persona vs tarjeta en el pipeline.",
+        rationale: "El Contacto representa la persona; la Oportunidad representa la negociación asociada en el embudo."
+    },
+    {
+        question: "Si un mismo Contacto está interesado en dos productos diferentes (ej. un curso y un diplomado), ¿cuál es el procedimiento correcto?",
+        options: [
+            "Crear dos Contactos separados para evitar confusiones.",
+            "Mantener 1 Contacto, pero crear 2 Oportunidades separadas, una para cada producto.",
+            "Mantener 1 Contacto y 1 Oportunidad, y gestionar ambos intereses en las Notas.",
+            "Asignar el Contacto a dos asesores diferentes."
+        ],
+        correct: 1,
+        hint: "Un Contacto puede tener varias Oportunidades.",
+        rationale: "Se usa un solo Contacto por persona y una Oportunidad por cada negociación/producto."
+    },
+    {
+        question: "¿Cuál es la diferencia entre ser Propietario (Owner) de un contacto y ser Seguidor (Follower)?",
+        options: [
+            "El Propietario puede editar, el Seguidor solo puede ver.",
+            "El Propietario es el dueño y responsable principal; el Seguidor es un colaborador que puede ver y comentar.",
+            "El Propietario recibe comisiones, el Seguidor no.",
+            "El Propietario es el asesor de ventas, el Seguidor es el gerente."
+        ],
+        correct: 1,
+        hint: "Owner = responsabilidad; Follower = colaboración.",
+        rationale: "El Owner es responsable principal del contacto; los Followers colaboran con visibilidad y comentarios."
+    },
+    {
+        question: "¿Para qué sirve sincronizar tu calendario de Google/Outlook con Super Leads?",
+        options: [
+            "Para que el sistema pueda enviar correos masivos desde tu cuenta.",
+            "Para que el sistema sepa cuándo estás ocupado y solo ofrezca citas en tus horarios libres.",
+            "Para importar automáticamente todos tus contactos de Google/Outlook.",
+            "Para que puedas ver los calendarios de tus compañeros."
+        ],
+        correct: 1,
+        hint: "Disponibilidad y ocupación son clave para citas.",
+        rationale: "La sincronización permite al sistema ofrecer citas en horarios disponibles reales del asesor."
+    },
+    {
+        question: "¿Cuál es la pestaña más importante en el módulo de Conversaciones donde debes centrar tu atención para responder nuevos mensajes?",
+        options: [
+            "Todos",
+            "Recientes",
+            "Destacadas",
+            "Sin Leer"
+        ],
+        correct: 3,
+        hint: "Enfócate en lo que aún no tiene respuesta.",
+        rationale: "La pestaña Sin Leer agrupa los mensajes pendientes de respuesta y prioriza la atención inmediata."
+    },
+    {
+        question: "Si escribes un mensaje en la caja de texto que se vuelve AMARILLA (Comentario Interno), ¿quién puede ver ese mensaje?",
+        options: [
+            "El cliente y tu supervisor.",
+            "Solo el cliente.",
+            "Solo tus compañeros de equipo y supervisores (el cliente NO lo ve).",
+            "Nadie, es solo un borrador."
+        ],
+        correct: 2,
+        hint: "Color amarillo = interno, no visible al cliente.",
+        rationale: "Los comentarios internos son visibles para el equipo, nunca para el cliente."
+    },
+    {
+        question: "¿Para qué sirve usar la @mención (ej. @Ricardo) dentro de un Comentario Interno?",
+        options: [
+            "Para enviar una notificación directa a ese compañero sobre ese lead.",
+            "Para asignarle el contacto permanentemente a ese compañero.",
+            "Para copiar a ese compañero en el próximo correo al cliente.",
+            "Para pedirle permiso al cliente de hablar con Ricardo."
         ],
         correct: 0,
-        hint: "Piensa en cómo medimos si los estudiantes realmente aprendieron.",
-        rationale: "El propósito principal es evaluar si el programa educativo logró sus objetivos de aprendizaje y si los participantes adquirieron los conocimientos y habilidades esperadas."
+        hint: "La mención genera una notificación al equipo.",
+        rationale: "La @mención avisa a un compañero dentro del hilo interno para coordinación y seguimiento."
     },
     {
-        question: "¿Qué métrica es más importante para validar el aprendizaje?",
+        question: "¿Qué sucede si un prospecto te envía su número de teléfono con guiones (ej. 55-1234-5678) en un chat?",
         options: [
-            "Número de asistentes a la capacitación",
-            "Porcentaje de aprobación en evaluaciones post-capacitación",
-            "Duración total del programa",
-            "Costo por participante"
-        ],
-        correct: 1,
-        hint: "Considera qué nos dice realmente si alguien aprendió.",
-        rationale: "El porcentaje de aprobación en evaluaciones post-capacitación es crucial porque indica directamente cuántos participantes demostraron comprensión y retención del material."
-    },
-    {
-        question: "¿Cuándo debería realizarse una evaluación de validación de aprendizaje?",
-        options: [
-            "Solo al inicio del programa",
-            "Únicamente durante el programa",
-            "Al inicio, durante y después del programa",
-            "Solo cuando los estudiantes lo soliciten"
+            "El sistema lo guarda automáticamente en la ficha del contacto.",
+            "El sistema lo rechaza y le pide al cliente que lo escriba de nuevo.",
+            "El sistema NO lo capturará automáticamente; el asesor debe copiarlo y pegarlo manualmente sin los guiones.",
+            "El sistema lo guarda, pero lo marca como inválido."
         ],
         correct: 2,
-        hint: "Piensa en un enfoque completo de evaluación.",
-        rationale: "Las evaluaciones deben realizarse en múltiples momentos: pre-evaluación para establecer una línea base, evaluaciones formativas durante el programa, y evaluación sumativa al final."
+        hint: "Los guiones pueden impedir la captura automática.",
+        rationale: "La extracción automática requiere formato estándar; con guiones debe limpiarse manualmente."
     },
     {
-        question: "¿Qué tipo de preguntas son más efectivas para validar el aprendizaje?",
+        question: "¿Para qué sirve marcar un chat con el ícono de la estrella ⭐️?",
         options: [
-            "Preguntas de sí/no únicamente",
-            "Preguntas de opción múltiple con distractores plausibles",
-            "Preguntas abiertas sin criterios de evaluación",
-            "Preguntas que solo requieren memorización"
-        ],
-        correct: 1,
-        hint: "Considera preguntas que prueben comprensión real, no solo memorización.",
-        rationale: "Las preguntas de opción múltiple con distractores plausibles son efectivas porque pueden evaluar diferentes niveles de comprensión y discriminar entre quienes realmente entendieron y quienes no."
-    },
-    {
-        question: "¿Cuál es una buena tasa de aprobación para considerar exitosa una capacitación?",
-        options: [
-            "30-40%",
-            "50-60%",
-            "70-80%",
-            "95-100%"
+            "Para marcar al cliente como VIP.",
+            "Para enviar el chat a tu supervisor para revisión.",
+            "Para mover el chat a la pestaña Destacadas y darle seguimiento prioritario.",
+            "Para bloquear al contacto."
         ],
         correct: 2,
-        hint: "Piensa en un balance entre desafío y éxito.",
-        rationale: "Una tasa de aprobación del 70-80% generalmente indica que el programa es efectivo mientras mantiene un estándar adecuado de dificultad."
+        hint: "La estrella sirve para priorizar conversaciones.",
+        rationale: "Destacar un chat lo mueve a la sección prioritaria para seguimiento."
     },
     {
-        question: "¿Qué debería incluir un reporte de validación de aprendizaje?",
+        question: "¿Cuál es el límite de tamaño para los archivos (PDF, videos) que un ASESOR puede ENVIAR al cliente?",
         options: [
-            "Solo las calificaciones finales",
-            "Estadísticas de participación y resultados de evaluaciones",
-            "Opiniones personales del instructor",
-            "Lista de materiales utilizados"
+            "100 MB",
+            "25 MB",
+            "5 MB",
+            "No hay límite."
         ],
         correct: 1,
-        hint: "Considera datos objetivos y medibles.",
-        rationale: "Un buen reporte debe incluir estadísticas de participación, resultados de evaluaciones (pre y post), análisis de mejora, y recomendaciones para futuras capacitaciones."
+        hint: "Recuerda las restricciones de salida.",
+        rationale: "El límite para archivos enviados por el asesor es de 25 MB."
     },
     {
-        question: "¿Cómo se mide el 'aprendizaje retenido' a largo plazo?",
+        question: "¿Qué pasa con los archivos (ej. documentos de inscripción) que un CLIENTE te envía?",
         options: [
-            "Encuestas de satisfacción inmediatas",
-            "Evaluaciones de seguimiento semanas o meses después",
-            "Contando las hojas de asistencia",
-            "Midiendo el tiempo total de instrucción"
+            "Tienen un límite de 25 MB.",
+            "Se borran después de 30 días, como en WhatsApp.",
+            "No tienen límite de tamaño (límite de 25MB es solo para salientes) y no caducan.",
+            "Solo se pueden recibir archivos PDF."
         ],
-        correct: 1,
-        hint: "Piensa en evaluar el conocimiento después de un tiempo.",
-        rationale: "Las evaluaciones de seguimiento (follow-up) semanas o meses después de la capacitación miden cuánto conocimiento se retuvo realmente y si se está aplicando en el trabajo."
+        correct: 2,
+        hint: "Diferencia entre archivos salientes y entrantes.",
+        rationale: "Los archivos entrantes del cliente no tienen ese límite y no vencen."
     },
     {
-        question: "¿Qué indica una gran diferencia entre evaluaciones pre y post-capacitación?",
+        question: "¿Cuál es la forma más sencilla de mover una Oportunidad (tarjeta) de una etapa a otra en el pipeline (embudo)?",
         options: [
-            "Que la evaluación pre fue muy difícil",
-            "Que el programa fue efectivo en enseñar nuevos conceptos",
-            "Que los estudiantes no estudiaron lo suficiente",
-            "Que el instructor no fue claro"
+            "Editando el campo Etapa dentro del contacto.",
+            "Creando una nota interna.",
+            "Arrastrando y soltando (drag and drop) la tarjeta a la siguiente columna.",
+            "Enviando un correo electrónico al supervisor."
         ],
-        correct: 1,
-        hint: "Considera qué representa una mejora significativa.",
-        rationale: "Una gran diferencia positiva entre evaluaciones pre y post indica que el programa fue efectivo en transmitir nuevos conocimientos y habilidades a los participantes."
+        correct: 2,
+        hint: "Piensa en el uso típico de un kanban.",
+        rationale: "El movimiento de oportunidades entre etapas se hace con drag and drop en el embudo."
     },
     {
-        question: "¿Cuál es el propósito de incluir una evaluación 'pre' antes de la capacitación?",
+        question: "¿En qué estado debes poner una Oportunidad si el cliente te dice explícitamente 'No me interesa, gracias'?",
         options: [
-            "Para desalentar a los participantes",
-            "Para establecer una línea base del conocimiento previo",
-            "Para ahorrar tiempo durante la capacitación",
-            "Para cumplir con requisitos administrativos"
+            "Abierto",
+            "Abandonado",
+            "Perdido",
+            "Ganado"
         ],
-        correct: 1,
-        hint: "Piensa en tener un punto de referencia.",
-        rationale: "La evaluación pre establece una línea base del conocimiento previo, permitiendo medir cuánto aprendieron realmente los participantes durante la capacitación."
+        correct: 2,
+        hint: "La negativa explícita indica el estado.",
+        rationale: "Una negativa explícita se clasifica como Oportunidad Perdida."
     },
     {
-        question: "¿Qué debería hacerse si los resultados de validación son bajos?",
+        question: "¿En qué estado debes poner una Oportunidad si intentaste contactar al lead 9 veces (toques) y NUNCA te respondió?",
         options: [
-            "Ignorar los resultados y continuar igual",
-            "Revisar y mejorar el contenido y metodología del programa",
-            "Bajar los estándares de aprobación",
-            "Culpar a los participantes por no esforzarse"
+            "Abierto",
+            "Abandonado",
+            "Perdido",
+            "Frío"
         ],
         correct: 1,
-        hint: "Considera un enfoque de mejora continua.",
-        rationale: "Resultados bajos indican que el programa necesita ser revisado y mejorado. Esto puede incluir ajustar el contenido, cambiar la metodología de enseñanza, o proporcionar apoyo adicional."
+        hint: "Sin respuesta tras múltiples intentos.",
+        rationale: "Sin respuesta tras el proceso de toques se considera Abandonado."
+    },
+    {
+        question: "¿Cuál es la diferencia clave entre Perdido y Abandonado?",
+        options: [
+            "Perdido es cuando te dijo 'no' y Abandonado es cuando te 'gosteó' (no responde).",
+            "Perdido es cuando se fue con la competencia y Abandonado es cuando no tenía dinero.",
+            "Perdido lo marca el asesor y Abandonado lo marca el sistema automáticamente.",
+            "No hay diferencia, significan lo mismo."
+        ],
+        correct: 0,
+        hint: "Diferencia entre rechazo explícito y ausencia de respuesta.",
+        rationale: "Perdido = rechazo explícito; Abandonado = no hay respuesta tras intentos."
+    },
+    {
+        question: "Según lo acordado en las sesiones, ¿cuándo se considera una Oportunidad como Ganada?",
+        options: [
+            "Cuando el cliente dice 'sí, me voy a inscribir'.",
+            "Cuando el cliente asiste a una cita.",
+            "Cuando el cliente completa el pago y finaliza su proceso (ej. matriculado).",
+            "Cuando el cliente llena el formulario inicial."
+        ],
+        correct: 2,
+        hint: "La confirmación real es el pago completado.",
+        rationale: "La Oportunidad se considera Ganada cuando el proceso finaliza con pago y matriculación."
+    }
+    ,
+    {
+        question: "¿Dónde se registran correctamente las citas agendadas con un lead dentro de Super Leads?",
+        options: [
+            "En las Notas del contacto.",
+            "Dentro de la Oportunidad.",
+            "En el Calendario sincronizado (Google/Outlook).",
+            "En las Etiquetas (Tags)."
+        ],
+        correct: 2,
+        hint: "Piensa en el lugar que gestiona horarios reales.",
+        rationale: "Las citas se gestionan en el calendario sincronizado para respetar disponibilidad y evitar choques de horario."
     }
 ];
+
+// Preguntas adicionales solicitadas (19–30)
+const extraQuestions = [
+    {
+        question: "¿Cuál es la herramienta N°1 dentro de Super Leads para agendar un seguimiento (ej. 'Llamar a Juan el próximo viernes')?",
+        options: [
+            "Usar las Notas.",
+            "Poner una Etiqueta (Tag).",
+            "Crear una Tarea (Task).",
+            "Agendar una cita en tu calendario de Outlook."
+        ],
+        correct: 2,
+        hint: "Agendar seguimiento = crear una acción con fecha.",
+        rationale: "La forma correcta de programar un seguimiento es crear una Tarea con fecha y recordatorio."
+    },
+    {
+        question: "Si quieres hacer un seguimiento intensivo a un lead que no responde, ¿qué tipo de Tarea puedes crear?",
+        options: [
+            "Una Tarea 'Prioritaria'.",
+            "Una Tarea 'Recurrente' (ej. que se repita cada día durante 5 días).",
+            "Una Tarea 'Automatizada'.",
+            "Una Tarea 'Compartida'."
+        ],
+        correct: 1,
+        hint: "Repite la acción varios días seguidos.",
+        rationale: "Las Tareas recurrentes permiten insistir con un ritmo definido (ej. diario por 5 días)."
+    },
+    {
+        question: "¿Qué sucede si editas 5 campos de un Contacto y simplemente cierras la pestaña del navegador?",
+        options: [
+            "Los cambios se guardan automáticamente (auto-guardado).",
+            "Los cambios se pierden; la plataforma NO auto-guarda y debes presionar 'Guardar' o 'Actualizar'.",
+            "El sistema te envía un recordatorio para guardar.",
+            "Los cambios se guardan después de 5 minutos."
+        ],
+        correct: 1,
+        hint: "Confirma siempre con 'Guardar' o 'Actualizar'.",
+        rationale: "No hay auto-guardado: sin guardar explícito, los cambios se pierden."
+    },
+    {
+        question: "¿Para qué sirven las Listas Inteligentes (Smart Lists) en el módulo de Contactos?",
+        options: [
+            "Para crear campañas de Email Marketing.",
+            "Para crear filtros guardados (ej. 'Mis leads de Producto A').",
+            "Para que la IA te diga cuáles son los mejores leads.",
+            "Para ver un listado de las tareas del día."
+        ],
+        correct: 1,
+        hint: "Filtros reutilizables según criterios.",
+        rationale: "Las Smart Lists son filtros guardados que segmentan contactos según condiciones."
+    },
+    {
+        question: "¿Dónde debes registrar las 'tipificaciones' que usabas en HubSpot (ej. 'Toque 1', 'Toque 2', 'Descartable')?",
+        options: [
+            "En las Notas.",
+            "En las Etiquetas (Tags).",
+            "En el nombre del Contacto.",
+            "En los Comentarios Internos."
+        ],
+        correct: 1,
+        hint: "Usa categorización flexible y filtrable.",
+        rationale: "Las etiquetas permiten clasificar contactos y filtrar por esas tipificaciones."
+    },
+    {
+        question: "¿Qué es un 'Campo Personalizado' (Custom Field)?",
+        options: [
+            "Un campo de texto libre para que el asesor escriba lo que quiera.",
+            "Un campo de datos específico creado para guardar información clave (ej. 'Promedio', 'Carrera de Interés').",
+            "Un nombre personalizado para la Oportunidad.",
+            "Un filtro en el embudo."
+        ],
+        correct: 1,
+        hint: "Sirve para datos estructurados clave.",
+        rationale: "Un campo personalizado almacena información relevante con formato consistente y filtrable."
+    },
+    {
+        question: "¿Por qué es preferible usar un campo de 'Elegir Opciones' (Dropdown) en lugar de 'Texto Abierto' para registrar de qué escuela viene un lead?",
+        options: [
+            "Porque los campos de texto abierto no se pueden editar.",
+            "Para evitar datos sucios y normalizar valores para filtrar correctamente.",
+            "Porque los campos de texto abierto no se ven en el celular.",
+            "Porque los campos 'Dropdown' son más rápidos de llenar."
+        ],
+        correct: 1,
+        hint: "Normaliza valores y evita variaciones.",
+        rationale: "Con dropdown evitas inconsistencias (UVM, Univ. del Valle, Valle de Mex) y mejoras el filtrado."
+    },
+    {
+        question: "¿Cuántos números de WhatsApp se pueden conectar a una misma cuenta de Super Leads (según la recomendación de la capacitación)?",
+        options: [
+            "Tantos como asesores haya.",
+            "Solo uno, que funciona como un 'conmutador' que reparte los leads.",
+            "Uno para Licenciaturas y uno para Educación Continua.",
+            "Ninguno, WhatsApp no se puede conectar."
+        ],
+        correct: 1,
+        hint: "Un número institucional para canalizar.",
+        rationale: "Se recomienda un único número central que distribuya y organice los chats."
+    },
+    {
+        question: "¿Cuántas páginas de Facebook o cuentas de Instagram se pueden conectar por cuenta de Super Leads?",
+        options: [
+            "Ilimitadas.",
+            "Diez por cada asesor.",
+            "Solo una de cada una (una de Facebook y una de Instagram).",
+            "Depende del plan contratado."
+        ],
+        correct: 2,
+        hint: "Una por red, por cuenta.",
+        rationale: "La plataforma permite conectar una página de Facebook y una cuenta de Instagram por cuenta."
+    },
+    {
+        question: "¿Cómo planea el equipo de implementación asignar leads de WhatsApp de Educación Continua, si solo hay un número de WhatsApp institucional?",
+        options: [
+            "Un asesor recibirá todos los chats y los reasignará manualmente.",
+            "Se crearán links de WhatsApp únicos con una 'frase única' que una automatización detectará.",
+            "Los asesores de EC tendrán que revisar todos los chats del inbox general.",
+            "No es posible, los leads de EC solo pueden llegar por Facebook."
+        ],
+        correct: 1,
+        hint: "Automatiza la identificación del origen.",
+        rationale: "Links con frase única permiten enrutar automáticamente los chats de EC por reglas."
+    },
+    {
+        question: "En tu vista de Asesor, ¿cuántos contactos verás en tu módulo de Contactos?",
+        options: [
+            "Veré todos los contactos de la base de datos de la empresa.",
+            "Solo veré los contactos de los que soy Propietario o Seguidor.",
+            "Solo veré los contactos que hayan llegado en las últimas 24 horas.",
+            "Veré los contactos de todo mi equipo (pero no de otras áreas)."
+        ],
+        correct: 1,
+        hint: "Visibilidad según rol en cada contacto.",
+        rationale: "La vista del asesor muestra los contactos donde es Owner o Follower, no toda la base."
+    },
+    {
+        question: "¿Cuándo se implementará la Inteligencia Artificial (IA) para ayudar a contestar leads?",
+        options: [
+            "Desde el primer día, es la función principal.",
+            "No se implementará, no está incluida.",
+            "En una 'segunda etapa', después de que el equipo domine el uso manual de la plataforma.",
+            "Solo se usará para los leads de Educación Continua."
+        ],
+        correct: 2,
+        hint: "Primero dominio operativo, luego IA.",
+        rationale: "La IA se activa en una segunda fase, tras consolidar procesos manuales."
+    }
+];
+
+// Agregar preguntas adicionales al quiz
+quizData.push(...extraQuestions);
 
 // Variables globales
 let currentQuestion = 0;
@@ -128,6 +376,9 @@ let score = 0;
 let userAnswers = [];
 let userName = '';
 let userInstitution = '';
+// Selección aleatoria: el usuario responde solo 10 preguntas
+const QUIZ_QUESTION_COUNT = 10;
+let activeQuiz = [];
 // URL del Web App de Google Apps Script
 // PASOS PARA CONFIGURAR:
 // 1. Ve a https://script.google.com y crea un nuevo proyecto
@@ -190,6 +441,8 @@ function startQuiz() {
     currentQuestion = 0;
     score = 0;
     userAnswers = [];
+    // Seleccionar aleatoriamente 10 preguntas del total
+    activeQuiz = pickRandomQuestions(quizData, QUIZ_QUESTION_COUNT);
     
     // Mostrar primera pregunta
     showQuestion();
@@ -208,13 +461,13 @@ function showError(message) {
 
 // Función para mostrar pregunta actual
 function showQuestion() {
-    const question = quizData[currentQuestion];
+    const question = activeQuiz[currentQuestion];
     
     // Actualizar contador de preguntas
-    questionCounter.textContent = `Pregunta ${currentQuestion + 1} de ${quizData.length}`;
+    questionCounter.textContent = `Pregunta ${currentQuestion + 1} de ${activeQuiz.length}`;
     
     // Actualizar barra de progreso
-    const progress = ((currentQuestion + 1) / quizData.length) * 100;
+    const progress = ((currentQuestion + 1) / activeQuiz.length) * 100;
     progressBar.style.width = `${progress}%`;
     
     // Mostrar texto de la pregunta
@@ -244,7 +497,7 @@ function showQuestion() {
 
 // Función para seleccionar respuesta
 function selectAnswer(selectedIndex) {
-    const question = quizData[currentQuestion];
+    const question = activeQuiz[currentQuestion];
     const buttons = answerOptions.querySelectorAll('button');
     
     // Deshabilitar todos los botones
@@ -289,7 +542,7 @@ function selectAnswer(selectedIndex) {
 
 // Función para mostrar pista
 function showHint() {
-    const question = quizData[currentQuestion];
+    const question = activeQuiz[currentQuestion];
     hintText.textContent = question.hint;
     hintText.classList.remove('hidden');
     hintBtn.textContent = 'Pista mostrada';
@@ -300,7 +553,7 @@ function showHint() {
 function nextQuestion() {
     currentQuestion++;
     
-    if (currentQuestion < quizData.length) {
+    if (currentQuestion < activeQuiz.length) {
         showQuestion();
     } else {
         showResults();
@@ -321,7 +574,7 @@ function showResults() {
             finalUserName.textContent = userName;
         }
         if (finalScore) {
-            finalScore.textContent = `${score} de ${quizData.length} (${Math.round((score / quizData.length) * 100)}%)`;
+            finalScore.textContent = `${score} de ${activeQuiz.length} (${Math.round((score / activeQuiz.length) * 100)}%)`;
         }
         
         // Mostrar resumen de respuestas
@@ -343,20 +596,31 @@ function showResults() {
         console.log('showResults completed successfully');
 
         // Enviar resultados a Google Sheets
-        const percent = Math.round((score / quizData.length) * 100);
+        const percent = Math.round((score / activeQuiz.length) * 100);
         // Alinear nombres de campos con Apps Script
         sendResultToSheet({
             nombre: userName,
             institucion: userInstitution,
             puntaje: score,
             porcentaje: percent,
-            total: quizData.length,
+            total: activeQuiz.length,
             respuestas: JSON.stringify(userAnswers),
             timestamp: new Date().toISOString()
         });
     } catch (error) {
         console.error('Error in showResults:', error);
     }
+}
+
+// Utilidad: tomar preguntas aleatorias
+function pickRandomQuestions(allQuestions, count) {
+    const arr = [...allQuestions];
+    // Barajar con Fisher–Yates
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr.slice(0, Math.min(count, arr.length));
 }
 
 // Enviar datos al Web App de Google Apps Script
@@ -387,8 +651,9 @@ async function sendResultToSheet(payload) {
             await fetch(SHEETS_WEB_APP_URL, {
                 method: 'POST',
                 mode: 'no-cors',
+                // Usar simple request para evitar preflight en no-cors
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'text/plain'
                 },
                 body: JSON.stringify(payload),
                 credentials: 'omit'
