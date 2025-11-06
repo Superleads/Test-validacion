@@ -392,7 +392,14 @@ let activeQuiz = [];
 // 3. Despliega como Web App (Deploy → New deployment → Type: Web App)
 // 4. Copia la URL que termina en /exec y pégala aquí
 // Deployment ID actual: AKfycbyYBs3-sKDR_e958HdCMm2u6ErzjswsRuMvK12HS4qmIL0QUI_e2RAz_p5jsoHYOSew
-const SHEETS_WEB_APP_URL = 'https://script.google.com/a/macros/superleads.mx/s/AKfycbyYBs3-sKDR_e958HdCMm2u6ErzjswsRuMvK12HS4qmIL0QUI_e2RAz_p5jsoHYOSew/exec';
+const SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyYBs3-sKDR_e958HdCMm2u6ErzjswsRuMvK12HS4qmIL0QUI_e2RAz_p5jsoHYOSew/exec';
+
+// Verificar configuración al cargar
+console.log('Configuración del Web App:', {
+    url: SHEETS_WEB_APP_URL,
+    configurado: SHEETS_WEB_APP_URL && !SHEETS_WEB_APP_URL.includes('PON_AQUI_TU_URL'),
+    problema_detectado: SHEETS_WEB_APP_URL.includes('/a/macros/') ? 'URL contiene /a/macros/ - debería ser solo /macros/' : 'none'
+});
 
 // Referencias a elementos del DOM
 const welcomeScreen = document.getElementById('welcome-screen');
@@ -648,10 +655,14 @@ function pickRandomQuestions(allQuestions, count) {
 // Enviar datos al Web App de Google Apps Script
 async function sendResultToSheet(payload) {
     try {
-        if (!SHEETS_WEB_APP_URL) {
-            console.warn('SHEETS_WEB_APP_URL no está configurado. Pega aquí tu URL de Google Apps Script.');
+        if (!SHEETS_WEB_APP_URL || SHEETS_WEB_APP_URL.includes('PON_AQUI_TU_URL')) {
+            console.error('SHEETS_WEB_APP_URL no está configurado correctamente.');
+            showError('⚠️ No está configurada la URL del Web App de Google Sheets. Contacta al administrador.');
             return;
         }
+        
+        console.log('Intentando enviar datos a Google Sheets...', payload);
+        
         // Intento normal con CORS
         const res = await fetch(SHEETS_WEB_APP_URL, {
             method: 'POST',
@@ -661,28 +672,47 @@ async function sendResultToSheet(payload) {
             body: JSON.stringify(payload),
             credentials: 'omit'
         });
+        
+        console.log('Respuesta del servidor:', res.status, res.statusText);
+        
         if (res.ok) {
-            console.log('Datos enviados a Sheets. Status:', res.status);
+            const responseData = await res.json();
+            console.log('Datos enviados exitosamente:', responseData);
+            showError('✅ Datos guardados en Google Sheets correctamente.');
+        } else if (res.status === 302 || res.status === 301) {
+            console.error('Redirección detectada - El Web App no está configurado correctamente.');
+            showError('❌ El Web App de Google Sheets no está accesible. Verifica que esté desplegado como "Cualquiera" tenga acceso.');
         } else {
-            console.warn('Respuesta no OK al enviar datos. Status:', res.status, 'Type:', res.type);
+            console.error('Error HTTP:', res.status, res.statusText);
+            const errorText = await res.text();
+            console.error('Respuesta de error:', errorText);
+            showError(`❌ Error ${res.status}: ${res.statusText}. Verifica la configuración del Web App.`);
         }
     } catch (err) {
-        console.warn('Fallo envío con CORS, reintentando con no-cors...', err);
-        // Fallback sin CORS (no permite leer respuesta, pero envía la petición)
-        try {
-            await fetch(SHEETS_WEB_APP_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                // Usar simple request para evitar preflight en no-cors
-                headers: {
-                    'Content-Type': 'text/plain'
-                },
-                body: JSON.stringify(payload),
-                credentials: 'omit'
-            });
-            console.log('Datos enviados a Sheets en modo no-cors (respuesta opaca).');
-        } catch (err2) {
-            console.error('Error enviando datos a Sheets incluso con no-cors:', err2);
+        console.error('Fallo envío con CORS:', err);
+        
+        // Si es un error de red o CORS, intentar con no-cors
+        if (err.name === 'TypeError' || err.message.includes('CORS') || err.message.includes('Failed to fetch')) {
+            showError('🔁 Falló el envío con CORS. Reintentando con modo sin CORS...');
+            
+            try {
+                await fetch(SHEETS_WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    body: JSON.stringify(payload),
+                    credentials: 'omit'
+                });
+                console.log('Datos enviados en modo no-cors (respuesta opaca).');
+                showError('⚠️ Datos enviados en modo sin CORS. Revisa tu Google Sheet para confirmar.');
+            } catch (err2) {
+                console.error('Error incluso con no-cors:', err2);
+                showError('❌ No se pudieron guardar los datos. Verifica la URL y configuración del Web App.');
+            }
+        } else {
+            showError('❌ Error de red: ' + err.message);
         }
     }
 }
