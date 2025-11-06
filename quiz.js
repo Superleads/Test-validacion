@@ -369,6 +369,12 @@ const extraQuestions = [
 
 // Agregar preguntas adicionales al quiz
 quizData.push(...extraQuestions);
+// Filtrar preguntas que contengan contenido sobre HubSpot
+for (let i = quizData.length - 1; i >= 0; i--) {
+    if (/hubspot/i.test(quizData[i].question)) {
+        quizData.splice(i, 1);
+    }
+}
 
 // Variables globales
 let currentQuestion = 0;
@@ -413,7 +419,7 @@ const restartBtn = document.getElementById('restart-btn');
 // Event listeners
 startBtn.addEventListener('click', startQuiz);
 nextBtn.addEventListener('click', nextQuestion);
-restartBtn.addEventListener('click', restartQuiz);
+// Se deshabilita la opción de reiniciar el test
 hintBtn.addEventListener('click', showHint);
 
 // Función para iniciar el quiz
@@ -562,13 +568,19 @@ function nextQuestion() {
 
 // Función para mostrar resultados
 function showResults() {
-    console.log('showResults called - userName:', userName, 'score:', score, 'total:', quizData.length);
+    console.log('showResults called - userName:', userName, 'score:', score, 'total:', activeQuiz.length);
     
     try {
         // Ocultar pantalla de preguntas y mostrar resultados
         questionScreen.classList.add('hidden');
         endScreen.classList.remove('hidden');
         
+        // Ocultar/Deshabilitar reinicio
+        if (restartBtn) {
+            restartBtn.classList.add('hidden');
+            restartBtn.disabled = true;
+        }
+
         // Mostrar información del usuario y puntuación
         if (finalUserName) {
             finalUserName.textContent = userName;
@@ -580,6 +592,16 @@ function showResults() {
         // Mostrar resumen de respuestas
         if (resultsSummary) {
             resultsSummary.innerHTML = '';
+            // Recomendación si el puntaje es 6 o menor
+            if (score <= 6) {
+                const adviceDiv = document.createElement('div');
+                adviceDiv.className = 'p-4 rounded-lg mb-3 bg-yellow-50 border border-yellow-300';
+                adviceDiv.innerHTML = `
+                    <p class="font-medium mb-1">Recomendación</p>
+                    <p class="text-sm">Tu puntaje fue 6 o menor. Te sugerimos revisar la guía, ver la grabación de las capacitaciones o solicitar una sesión con el coordinador de implementación.</p>
+                `;
+                resultsSummary.appendChild(adviceDiv);
+            }
             userAnswers.forEach((answer, index) => {
                 const resultDiv = document.createElement('div');
                 resultDiv.className = `p-3 rounded-lg mb-2 ${answer.isCorrect ? 'correct-bg' : 'incorrect-bg'}`;
