@@ -392,7 +392,7 @@ let activeQuiz = [];
 // 3. Despliega como Web App (Deploy → New deployment → Type: Web App)
 // 4. Copia la URL que termina en /exec y pégala aquí
 // Deployment ID actual: AKfycbyYBs3-sKDR_e958HdCMm2u6ErzjswsRuMvK12HS4qmIL0QUI_e2RAz_p5jsoHYOSew
-const SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyYBs3-sKDR_e958HdCMm2u6ErzjswsRuMvK12HS4qmIL0QUI_e2RAz_p5jsoHYOSew/exec';
+const SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbw59LpQlCJ90ntIuH-q2dMxLSJvIQP_rZQlFBXQrUnA8o2xt8Hvs01V4RfIENtfV5Uc/exec';
 
 // Verificar configuración al cargar
 console.log('Configuración del Web App:', {
